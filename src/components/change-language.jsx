@@ -28,11 +28,11 @@ const ChangeLanguage = () => {
         <img src={usFlag} />
       </a>
       <div ref={ref} className={`dropdown-menu dropdown-menu-end ${show ? 'show' : undefined}`}>
-        <a className="dropdown-item fw-border" style={{textAlign:'right'}} onClick={()=> changeLanguage('fa')}>
+        <a className="dropdown-item fw-border d-flex align-items-center gap-2" style={{textAlign: language === 'fa' ? "right" : "left"}} onClick={()=> changeLanguage('fa')}>
           <img src={language === 'fa' ? faFlag : usFlag } width="20" className="ms-2" />
           <span className="align-middle">فارسی</span>
         </a>
-        <a className="dropdown-item fw-border" style={{textAlign:'right'}} onClick={()=> changeLanguage('en')}>
+        <a className="dropdown-item fw-border d-flex align-items-center gap-2" style={{textAlign: language === 'fa' ? "right" : "left"}} onClick={()=> changeLanguage('en')}>
           <img src={usFlag} width="20" className="ms-2" />
           <span className="align-middle">English</span>
         </a>

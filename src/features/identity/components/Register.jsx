@@ -48,9 +48,9 @@ const{t}=useTranslation();
     <>
       <div className="text-center mt-4">
         <img src={logo} style={{ height: "100px" }} />
-        <h1 className="h2">پلتفرم آموزش آنلاین</h1>
+        <h1 className="h2"> {t('register.title')} </h1>
         <p className="lead">
-          جهت ورود لازم است از طریق موبایل و رمز عبور خود اقدام کنید
+        {t('register.introMessage')}
         </p>
         <p className="lead">
           قبلا ثبت نام نکرده اید؟
