@@ -36,6 +36,7 @@ useEffect(() => {
   );
 };
 
+
 const useAppContext = () => {
   return useContext(AppContext);
 };
