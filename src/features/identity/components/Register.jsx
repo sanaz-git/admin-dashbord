@@ -8,7 +8,7 @@ import {
   useRouteError,
   useSubmit,
 } from "react-router-dom";
-import { httpService } from "../../../core/http-service";
+import { httpService } from "@core/http-service";
 import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 
@@ -20,7 +20,7 @@ const Register = () => {
     formState: { errors },
   } = useForm();
 
-const{t}=useTranslation();
+  const { t } = useTranslation();
 
   const submitForm = useSubmit();
 
