@@ -1,4 +1,4 @@
-const Course = ({
+const Courses = ({
   title,
   coverImageUrl,
   courseLevel,
@@ -57,4 +57,4 @@ const Course = ({
   );
 };
 
-export default Course;
+export default Courses;
