@@ -20,18 +20,29 @@ const Pagination = ({ totalRecords, pageSize = 10 }) => {
   return (
     <nav>
       <ul className="pagination pagination-lg">
-        <li className="page-item" onClick={prevPage}>
+        <li
+          className={`page-item ${
+            currentPage === 1 ? "disabled opacity-50" : ""
+          }`}
+          onClick={prevPage}
+        >
           <a className="page-link">قبلی</a>
         </li>
         {_.times(pages, (index) => (
           <li
             key={`page${index + 1}`}
+            className={`page-item ${index + 1 === currentPage ? "active" : ""}`}
             onClick={() => setSearchParams({ page: index + 1 })}
           >
             <a className="page-link">{index + 1}</a>
           </li>
         ))}
-        <li className="page-item" onClick={nextPage}>
+        <li
+          className={`page-item ${
+            currentPage === pages ? "disabled opacity-50" : ""
+          }`}
+          onClick={nextPage}
+        >
           <a className="page-link">بعدی</a>
         </li>
       </ul>
