@@ -20,6 +20,7 @@ const CourseCategories = () => {
           </Suspense>
         </div>
       </div>
+      <Modal isOpen={true}></Modal>
     </>
   );
 };
