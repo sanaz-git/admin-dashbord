@@ -5,8 +5,8 @@ const Pagination = ({
   pageSize = import.meta.env.VITE_PAGE_SIZE,
 }) => {
   const pages = Math.ceil(totalRecords / pageSize);
-
   const [searchParams, setSearchParams] = useSearchParams();
+
   const currentPage = +searchParams.get("page") || 1;
 
   const prevPage = () => {
@@ -14,6 +14,7 @@ const Pagination = ({
       setSearchParams({ page: currentPage - 1 });
     }
   };
+
   const nextPage = () => {
     if (currentPage < pages) {
       setSearchParams({ page: currentPage + 1 });

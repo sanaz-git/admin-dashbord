@@ -1,9 +1,10 @@
 import { Await, defer, useLoaderData } from "react-router-dom";
 import { httpInterceptedService } from "@core/http-service";
-import { Suspense } from "react";
+import { Suspense, useState } from "react";
 import CategoryList from "../features/categories/components/category-list";
 
 const CourseCategories = () => {
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
   const data = useLoaderData();
   return (
     <>
@@ -14,13 +15,32 @@ const CourseCategories = () => {
           >
             <Await resolve={data.categories}>
               {(loadedCategories) => (
-                <CategoryList categories={loadedCategories} />
+                <CategoryList
+                  setShowDeleteModal={setShowDeleteModal}
+                  categories={loadedCategories}
+                />
               )}
             </Await>
           </Suspense>
         </div>
       </div>
-      <Modal isOpen={true}></Modal>
+      <Modal
+        isOpen={showDeleteModal}
+        open={setShowDeleteModal}
+        title="حذف"
+        body="آیا از حذف این دسته اطمینان دارید؟"
+      >
+        <button
+          type="button"
+          className="btn btn-secondary fw-bolder"
+          onClick={() => setShowDeleteModal(false)}
+        >
+          انصراف
+        </button>
+        <button type="button" className="btn btn-primary fw-bolder">
+          حذف
+        </button>
+      </Modal>
     </>
   );
 };

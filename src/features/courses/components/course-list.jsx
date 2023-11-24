@@ -1,7 +1,6 @@
-import { useLoaderData } from "react-router-dom";
 import Course from "./course";
 
-const CoursesList = ({ courses }) => {
+const CourseList = ({ courses }) => {
   return (
     <>
       <div className="row">
@@ -15,4 +14,4 @@ const CoursesList = ({ courses }) => {
   );
 };
 
-export default CoursesList;
+export default CourseList;
