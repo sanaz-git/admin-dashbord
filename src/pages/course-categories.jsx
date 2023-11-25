@@ -21,6 +21,7 @@ const CourseCategories = () => {
 
     if (response.status === 200) {
       const url = new URL(windows.location.href);
+      navigate(url.pathname + url + search);
     }
   };
 
