@@ -2,12 +2,17 @@ import { Await, defer, useLoaderData, useNavigate } from "react-router-dom";
 import { httpInterceptedService } from "@core/http-service";
 import { Suspense, useState } from "react";
 import CategoryList from "../features/categories/components/category-list";
+import Modal from "../components/modal";
+import { toast } from "react-toastify";
+import { useTranslation } from "react-i18next";
 
 const CourseCategories = () => {
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState();
 
   const navigate = useNavigate();
+
+  const { t } = useTranslation();
 
   const deleteCategory = (categoryId) => {
     setSelectedCategory(categoryId);
@@ -16,13 +21,31 @@ const CourseCategories = () => {
 
   const handleDeleteCategory = async () => {
     setShowDeleteModal(false);
-    const response = await httpInterceptedService.delete(`
-  /CourseCategory/${selectedCategory}`);
+    const response = httpInterceptedService.delete(
+      `/CourseCategory/${selectedCategory}`
+    );
 
-    if (response.status === 200) {
-      const url = new URL(windows.location.href);
-      navigate(url.pathname + url + search);
-    }
+    toast.promise(
+      response,
+      {
+        pending: "در حال حذف ...",
+        success: {
+          render() {
+            const url = new URL(window.location.href);
+            navigate(url.pathname + url.search);
+            return "عملیات با موفقیت انجام شد";
+          },
+        },
+        error: {
+          render({ data }) {
+            return t("categoryList." + data.response.data.code);
+          },
+        },
+      },
+      {
+        position: toast.POSITION.BOTTOM_LEFT,
+      }
+    );
   };
 
   const data = useLoaderData();
@@ -30,6 +53,15 @@ const CourseCategories = () => {
     <>
       <div className="row">
         <div className="col-12">
+          <div className="d-flex align-items-center justify-content-between mb-5">
+            <a
+              className="btn btn-primary fw-bolder mt-n1"
+              onClick={() => setShowAddCategory(true)}
+            >
+              افزون دسته جدید
+            </a>
+          </div>
+
           <Suspense
             fallback={<p className="text-info">در حال دریافت اطلاعات...</p>}
           >
@@ -78,7 +110,6 @@ export async function categoriesLoader({ request }) {
 const loadCategories = async (request) => {
   const page = new URL(request.url).searchParams.get("page") || 1;
   const pageSize = import.meta.env.VITE_PAGE_SIZE;
-
   let url = "/CourseCategory/sieve";
 
   url += `?page=${page}&pageSize=${pageSize}`;

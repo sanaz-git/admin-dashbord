@@ -7,6 +7,7 @@ const CategoryList = ({
   deleteCategory,
 }) => {
   const navigation = useNavigation();
+
   return (
     <>
       <div className="row">
@@ -62,7 +63,7 @@ const CategoryList = ({
               </tbody>
             </table>
             <div className="card-footer">
-              <Pagination totalRecords={totalRecords} />
+              {/* <Pagination totalRecords={totalRecords} /> */}
             </div>
           </div>
         </div>

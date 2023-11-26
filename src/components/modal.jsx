@@ -11,7 +11,7 @@ const Modal = ({ isOpen, open, title, body, children }) => {
             onClick={() => open(false)}
           >
             <div
-              className="modal-dialog modal-dialog-centered "
+              className="modal-dialog modal-dialog-centered"
               onClick={(e) => e.stopPropagation()}
             >
               <div className="modal-content">
@@ -23,7 +23,7 @@ const Modal = ({ isOpen, open, title, body, children }) => {
                     onClick={() => open(false)}
                   ></button>
                 </div>
-                <div className="modal-body fw-bolder">
+                <div className="modal-body m-3">
                   <p className="mb-0">{body}</p>
                 </div>
                 <div className="modal-footer">{children}</div>
@@ -35,4 +35,5 @@ const Modal = ({ isOpen, open, title, body, children }) => {
     </>
   );
 };
+
 export default Modal;
