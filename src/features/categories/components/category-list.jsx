@@ -7,6 +7,7 @@ const CategoryList = ({
   deleteCategory,
 }) => {
   const navigation = useNavigation();
+  const { setCategory } = useCategoryContext();
 
   return (
     <>
@@ -27,7 +28,10 @@ const CategoryList = ({
                     <tr key={category.id}>
                       <td>{category.name}</td>
                       <td className="table-action">
-                        <a className="ms-3">
+                        <a
+                          className="ms-3"
+                          onClick={() => setCategory(category)}
+                        >
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
                             width="24"

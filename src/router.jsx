@@ -23,7 +23,11 @@ const router = createBrowserRouter([
       },
       {
         path: "course-categories",
-        element: <CourseCategories />,
+        element: (
+          <CategoryProvider>
+            <CourseCategories />
+          </CategoryProvider>
+        ),
         loader: categoriesLoader,
       },
       {

@@ -2,16 +2,32 @@ import { useForm } from "react-hook-form";
 import { httpInterceptedService } from "@core/http-service";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import { useCategoryContext } from "../category-context";
+import { useEffect } from "react";
 
 const AddOrUpdateCategory = ({ setShowAddCategory }) => {
   const {
     register,
     handleSubmit,
-
+    setValue,
     formState: { errors },
   } = useForm();
 
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (category) {
+      setValue("name", category.name);
+      setValue("id", category.id);
+    }
+  }, [category]);
+
+  const onClose = () => {
+    setShowAddCategory(false);
+    setCategory(null);
+  };
+
+  const { category, setCategory } = useCategoryContext();
 
   const onSubmit = (data) => {
     setShowAddCategory(false);
