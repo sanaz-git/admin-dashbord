@@ -11,11 +11,13 @@ import CourseDetails, {
   courseDetailsLoader,
 } from "./features/courses/components/course-details";
 import NotFound from "./pages/not-found";
+import UnhandledException from "./pages/unhandled-exception";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout />,
+    errorElement: <UnhandledException />,
     children: [
       {
         element: <Courses />,
