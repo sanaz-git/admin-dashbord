@@ -10,6 +10,7 @@ import CourseCategories, { categoriesLoader } from "./pages/course-categories";
 import CourseDetails, {
   courseDetailsLoader,
 } from "./features/courses/components/course-details";
+import NotFound from "./pages/not-found";
 
 const router = createBrowserRouter([
   {
@@ -53,6 +54,10 @@ const router = createBrowserRouter([
         errorElement: <Register />,
       },
     ],
+  },
+  {
+    path: "*",
+    element: <NotFound />,
   },
 ]);
 
