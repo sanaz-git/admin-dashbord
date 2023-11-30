@@ -1,20 +1,17 @@
 import { useNavigation } from "react-router-dom";
 import Pagination from "../../../components/pagination";
 import Spinner from "../../../components/spinner";
+import { useCategoryContext } from "../category-context";
 
-const CategoryList = ({
-  categories: { data, totalRecords },
-  deleteCategory,
-}) => {
+const CategoryList = ({ categories: { data, totalRecords } , deleteCategory}) => {
   const navigation = useNavigation();
-  const { setCategory } = useCategoryContext();
-
+  const {setCategory} = useCategoryContext();
   return (
     <>
       <div className="row">
         <div className="col-12">
           <div className="card">
-            {navigation.state !== "idle" && <Spinner />}
+            {navigation.state !== 'idle' && <Spinner/>}
             <table className="table table-striped">
               <thead>
                 <tr>
@@ -28,10 +25,7 @@ const CategoryList = ({
                     <tr key={category.id}>
                       <td>{category.name}</td>
                       <td className="table-action">
-                        <a
-                          className="ms-3"
-                          onClick={() => setCategory(category)}
-                        >
+                        <a className="ms-3" onClick={() => setCategory(category)}>
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
                             width="24"
@@ -46,7 +40,7 @@ const CategoryList = ({
                           </svg>
                         </a>
                         <a onClick={() => deleteCategory(category.id)}>
-                          <svg
+                        <svg
                             xmlns="http://www.w3.org/2000/svg"
                             width="24"
                             height="24"
@@ -67,7 +61,7 @@ const CategoryList = ({
               </tbody>
             </table>
             <div className="card-footer">
-              {/* <Pagination totalRecords={totalRecords} /> */}
+              <Pagination totalRecords={totalRecords}/>
             </div>
           </div>
         </div>

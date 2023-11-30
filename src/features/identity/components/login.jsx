@@ -1,13 +1,7 @@
 import logo from "@assets/images/logo.svg";
 import { useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
-import {
-  Link,
-  redirect,
-  useNavigation,
-  useRouteError,
-  useSubmit,
-} from "react-router-dom";
+import { Link, redirect, useNavigation, useRouteError, useSubmit } from "react-router-dom";
 import { httpService } from "@core/http-service";
 const Login = () => {
   const { t } = useTranslation();
@@ -119,7 +113,7 @@ export async function loginAction({ request }) {
   const response = await httpService.post("/Users/login", data);
   if (response.status === 200) {
     localStorage.setItem("token", response?.data.token);
-    return redirect("/");
+    return redirect('/');
   }
 }
 

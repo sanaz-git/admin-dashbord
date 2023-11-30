@@ -1,7 +1,10 @@
 import logo from "@assets/images/logo.svg";
+import { useEffect } from "react";
 import { useForm } from "react-hook-form";
+import { useTranslation } from "react-i18next";
 import {
   Link,
+  redirect,
   useActionData,
   useNavigate,
   useNavigation,
@@ -9,38 +12,34 @@ import {
   useSubmit,
 } from "react-router-dom";
 import { httpService } from "@core/http-service";
-import { useEffect } from "react";
-import { useTranslation } from "react-i18next";
-
 const Register = () => {
   const {
     register,
-    watch,
     handleSubmit,
+    watch,
     formState: { errors },
   } = useForm();
-
   const { t } = useTranslation();
 
   const submitForm = useSubmit();
 
   const onSubmit = (data) => {
-    // eslint-disable-next-line no-unused-vars
     const { confirmPassword, ...userData } = data;
     submitForm(userData, { method: "post" });
   };
-
   const navigation = useNavigation();
   const isSubmitting = navigation.state !== "idle";
-  const isSuccessOperation = useActionData();
-  const navigate = useNavigate();
+
   const routeErrors = useRouteError();
+  const isSuccessOperation = useActionData();
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (isSuccessOperation) {
       setTimeout(() => {
         navigate("/login");
-      }, 2000);
+      }, 3000);
     }
   }, [isSuccessOperation]);
 
@@ -165,11 +164,11 @@ const Register = () => {
   );
 };
 
-export default Register;
-
 export async function registerAction({ request }) {
   const formData = await request.formData();
   const data = Object.fromEntries(formData);
   const response = await httpService.post("/Users", data);
   return response.status === 200;
 }
+
+export default Register;

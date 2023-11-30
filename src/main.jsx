@@ -1,13 +1,10 @@
+import React from "react";
+import ReactDOM from "react-dom/client";
+import App from "./App";
+import { AppProvider } from "./contexts/app/app-context";
 
-import ReactDOM from 'react-dom/client'
-import App from './App.jsx'
-import { AppProvider } from './contexts/app/app-context.jsx'
-
-
-ReactDOM.createRoot(document.getElementById('root')).render(
- <AppProvider>
-       <App />
- </AppProvider>
- 
- 
-)
+ReactDOM.createRoot(document.getElementById("root")).render(
+  <AppProvider>
+    <App />
+  </AppProvider>
+);
