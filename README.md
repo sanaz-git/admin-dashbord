@@ -1,6 +1,6 @@
-# Classbon Course - Admin Dashboard
+# Admin Dashboard
 
-- https://classbon.com/
+Classbon Course 
 
 ## Link to App ([Click](https://sanaz-git.github.io/admin-dashbord/)) 
 
