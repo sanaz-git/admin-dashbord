@@ -1,6 +1,6 @@
 # Classbon Course - Admin Dashboard
 
-- (https://classbon.com/)
+- https://classbon.com/
 
 # React + Vite
 
