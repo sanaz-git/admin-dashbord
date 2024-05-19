@@ -12,6 +12,7 @@ import {
   useSubmit,
 } from "react-router-dom";
 import { httpService } from "@core/http-service";
+
 const Register = () => {
   const {
     register,

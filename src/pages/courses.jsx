@@ -4,7 +4,7 @@ import { Await, defer, useLoaderData } from "react-router-dom";
 import { Suspense } from "react";
 
 const Courses = () => {
-    const data = useLoaderData();
+  const data = useLoaderData();
   return (
     <div className="row">
       <div className="col-12">
