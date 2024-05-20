@@ -2,7 +2,7 @@
 
 Classbon Course 
 
-## Link to App ([Click](https://sanaz-git.github.io/admin-dashbord/)) 
+## Link to App ([Click](https://664a66d4da79e80cb3b9609d--fluffy-crepe-8cd6f5.netlify.app/login)) 
 
 # React + Vite
 
